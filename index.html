@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Gitlab + Drupal = ?</title>
+<meta name="author" content="(Jarek Sobiecki)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/blood.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Gitlab + Drupal = ?</h1><h2 class="author">Jarek Sobiecki</h2><p class="date">Created: 2017-05-27 sob 15:20</p>
+</section>
+
+
+<section>
+<section id="slide-org3a6ded0">
+<h2 id="org3a6ded0">Motywacja</h2>
+<p>
+(2015) Czym zastąpić Open Atrium do organizacji naszej pracy?
+</p>
+
+</section>
+<section id="slide-orga43aaf0">
+<h3 id="orga43aaf0">Rozpatrywane platformy</h3>
+<ul>
+<li class="fragment appear">Jira - <a href="https://www.atlassian.com/software/jira">https://www.atlassian.com/software/jira</a></li>
+<li class="fragment appear">Redmine - <a href="http://www.redmine.org/">http://www.redmine.org/</a></li>
+<li class="fragment appear">ERPal - <a href="https://www.drupal.org/project/erpal/">https://www.drupal.org/project/erpal/</a></li>
+<li class="fragment appear">Taiga - <a href="https://taiga.io/">https://taiga.io/</a></li>
+<li class="fragment appear">Open Atrium - <a href="http://docs.openatrium.com/">http://docs.openatrium.com/</a></li>
+<li class="fragment appear">Gitlab - <a href="https://gitlab.com">https://gitlab.com</a></li>
+
+</ul>
+
+</section>
+<section id="slide-orga7bcb82">
+<h3 id="orga7bcb82">Nasze kryteria</h3>
+<ul>
+<li class="fragment appear">Wygodne zarządzenie wieloma projektami</li>
+<li class="fragment appear">Dobra integracja z procesem CI</li>
+<li class="fragment appear">Wygoda (użytkownicy zewnętrzni)</li>
+<li class="fragment appear">Stabilna platforma biznesowa</li>
+<li class="fragment appear">Dobra integracja z GIT-em.</li>
+<li class="fragment appear">Rozliczanie czasu</li>
+<li class="fragment appear">Ograniczony budżet</li>
+
+</ul>
+
+<p class="fragment (appear)">
+Wybraliśmy oczywiście Gitlab-a :)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf4df856">
+<h2 id="orgf4df856">Gitlab - co to jest?</h2>
+<ul>
+<li class="fragment appear">2011 - Start jako narzędzie do zarządzania GIT-em (2 programistów)</li>
+<li class="fragment appear">2014 - Przejście na model open core (Gitlab CE / Gitlab EE)</li>
+<li class="fragment appear">2015 - 2016 Zdobycie kilkudziesięciu milionów dolarów z funduszy inwestycyjnych</li>
+
+</ul>
+
+</section>
+<section >
+<ul>
+<li class="fragment appear">Wydania funkcjonalne co miesiąc</li>
+<li class="fragment appear">Wydania bezpieczeństwa kilkukrotnie w ciągu miesiąca</li>
+<li class="fragment appear">Jasno określona wizja <a href="https://about.gitlab.com/direction/">https://about.gitlab.com/direction/</a></li>
+<li class="fragment appear">Kontener jako forma dystrybucji <a href="https://hub.docker.com/r/gitlab/gitlab-ce/">https://hub.docker.com/r/gitlab/gitlab-ce/</a></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org20543e0">
+<h2 id="org20543e0">Zarządzanie projektami i zadaniami</h2>
+<div class="outline-text-2" id="text-org20543e0">
+</div></section>
+<section id="slide-orga7f71c6">
+<h3 id="orga7f71c6">Tworzenie projektów</h3>
+<video class="stretch" controls data-src="wideo/nowy_projekt.mp4"></video>
+</section>
+<section id="slide-org527875d">
+<h3 id="org527875d">Zadania w projektach</h3>
+<video class="stretch" controls data-src="wideo/zadania.mp4"></video>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb3e0a18">
+<h2 id="orgb3e0a18">Komunikacja w zespole</h2>
+<ul>
+<li class="fragment appear">Snippety</li>
+<li class="fragment appear">Wiki</li>
+<li class="fragment appear">Komentarze</li>
+<li class="fragment appear">Mattermost</li>
+
+</ul>
+</section>
+<section >
+<video class="stretch" controls data-src="wideo/komunikacja.mp4"></video>
+
+
+</section>
+<section id="slide-org101351a">
+<h3 id="org101351a">Merge requests</h3>
+<video class="stretch" controls data-src="wideo/mr.mp4"></video>
+
+</section>
+</section>
+<section>
+<section id="slide-org1ef87b5">
+<h2 id="org1ef87b5">Continous integration z gitlabem</h2>
+<ul>
+<li>CI (Continous integration) - częste mergowanie kodu z głównym repozytorium.</li>
+
+</ul>
+
+</section>
+<section id="slide-org38b0255">
+<h3 id="org38b0255">Gitlab CI</h3>
+<ul>
+<li class="fragment appear">Konfiguracja opiera się na pliku .gitlab-ci.yml</li>
+<li class="fragment appear">Intuicja - klon travis-a</li>
+
+</ul>
+
+
+</section>
+<section id="slide-orgced9c57">
+<h3 id="orgced9c57">Gitlab-runner</h3>
+<ul>
+<li class="fragment appear">Proces, który wykonuje skrypty przekazane przez serwer gitlab.</li>
+<li class="fragment appear">SSH, shell, docker-machine etc.</li>
+<li class="fragment appear">Testy mogą wykonywać się równolegle, np. na innych serwerach</li>
+<li class="fragment appear">Każdy runner wybierany przez tagi</li>
+
+</ul>
+
+</section>
+<section >
+<video class="stretch" controls data-src="wideo/ci.mp4"></video>
+
+</section>
+<section id="slide-org9bab3d7">
+<h3 id="org9bab3d7">Auto skalowanie</h3>
+<ul>
+<li>Przykład: Public cloud w OVH</li>
+
+</ul>
+
+</section>
+<section id="slide-org78f9d82">
+<h3 id="org78f9d82">Review environment</h3>
+<ul>
+<li class="fragment appear">Tworzenie "tymczasowych" środowisk</li>
+<li class="fragment appear">Testowanie zmian przed zatwierdzeniem</li>
+
+</ul>
+
+</section>
+<section >
+<video class="stretch" controls data-src="wideo/review.mp4"></video>
+
+</section>
+<section id="slide-org9436f79">
+<h3 id="org9436f79">Docker registry</h3>
+<ul>
+<li class="fragment appear">Własne, prywatne repozytorium hostowane przez gitlab-a</li>
+<li class="fragment appear">Tworzenie obrazów jako element pipeline</li>
+
+</ul>
+
+</section>
+<section >
+<video class="stretch" controls data-src="wideo/registry.mp4"></video>
+
+</section>
+</section>
+<section>
+<section id="slide-org5148c26">
+<h2 id="org5148c26">Wady</h2>
+<ul>
+<li class="fragment appear">Słabe mechanizmy zliczania czasu</li>
+<li class="fragment appear">Brak możliwości stosowania punktów</li>
+<li class="fragment appear">Obejście: <a href="https://github.com/RatioWeb/greasemonkey-time-tracking">https://github.com/RatioWeb/greasemonkey-time-tracking</a></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9afeb0f">
+<h2 id="org9afeb0f">Dziękuję!</h2>
+<p>
+jsobiecki@ratioweb.pl 
+Ratio Web <a href="http://www.ratioweb.pl">http://www.ratioweb.pl</a>
+</p>
+
+</section>
+<section id="slide-org494ef2b" data-background="https://media.giphy.com/media/b4DY3AXN7b19m/giphy.gif">
+<h4 id="org494ef2b">Koniec</h4>
+</section>
+</section>
+</div>
+</div>
+<p> jsobiecki@ratioweb.pl </p>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: './video.js' },
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
