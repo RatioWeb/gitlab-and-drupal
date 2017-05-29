@@ -1,0 +1,131 @@
+#+Title: Gitlab + Drupal = ?
+#+Author: Jarek Sobiecki
+#+Email: jsobiecki@ratioweb.pl
+
+#+REVEAL_THEME: blood
+#+REVEAL_HLEVEL: 1
+#+OPTIONS: toc:0
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+REVEAL_POSTAMBLE: <p> jsobiecki@ratioweb.pl </p>
+#+REVEAL_EXTRA_JS: { src: './video.js' }
+
+
+* Motywacja
+  
+  (2015) Czym zastąpić Open Atrium do organizacji naszej pracy?
+  
+** Rozpatrywane platformy
+
+#+ATTR_REVEAL: :frag (appear)
+  - Jira - https://www.atlassian.com/software/jira
+  - Redmine - http://www.redmine.org/
+  - ERPal - https://www.drupal.org/project/erpal/
+  - Taiga - https://taiga.io/
+  - Open Atrium - http://docs.openatrium.com/
+  - Gitlab - https://gitlab.com
+
+** Nasze kryteria
+#+ATTR_REVEAL: :frag (appear)
+   - Wygodne zarządzenie wieloma projektami
+   - Dobra integracja z procesem CI
+   - Wygoda (użytkownicy zewnętrzni)
+   - Stabilna platforma biznesowa
+   - Dobra integracja z GIT-em.
+   - Rozliczanie czasu
+   - Ograniczony budżet
+
+#+ATTR_REVEAL: :frag (appear)
+Wybraliśmy oczywiście Gitlab-a :)
+
+* Gitlab - co to jest?
+
+#+ATTR_REVEAL: :frag (appear)
+   - 2011 - Start jako narzędzie do zarządzania GIT-em (2 programistów)
+   - 2014 - Przejście na model open core (Gitlab CE / Gitlab EE)
+   - 2015 - 2016 Zdobycie kilkudziesięciu milionów dolarów z funduszy inwestycyjnych
+
+#+REVEAL: split
+#+ATTR_REVEAL: :frag (appear)
+   - Wydania funkcjonalne co miesiąc
+   - Wydania bezpieczeństwa kilkukrotnie w ciągu miesiąca
+   - Jasno określona wizja https://about.gitlab.com/direction/
+   - Kontener jako forma dystrybucji https://hub.docker.com/r/gitlab/gitlab-ce/
+
+
+* Zarządzanie projektami i zadaniami
+** Tworzenie projektów
+   #+REVEAL_HTML: <video class="stretch" controls data-src="wideo/nowy_projekt.mp4"></video>
+** Zadania w projektach
+   #+REVEAL_HTML: <video class="stretch" controls data-src="wideo/zadania.mp4"></video>
+
+* Komunikacja w zespole 
+#+ATTR_REVEAL: :frag (appear)
+   - Snippety
+   - Wiki
+   - Komentarze
+   - Mattermost
+#+REVEAL: split
+   #+REVEAL_HTML: <video class="stretch" controls data-src="wideo/komunikacja.mp4"></video>
+     
+
+** Merge requests
+   #+REVEAL_HTML: <video class="stretch" controls data-src="wideo/mr.mp4"></video>
+
+* Continous integration z gitlabem 
+ - CI (Continous integration) - częste mergowanie kodu z głównym repozytorium.
+
+** Gitlab CI
+#+ATTR_REVEAL: :frag (appear)
+   - Konfiguracja opiera się na pliku .gitlab-ci.yml
+   - Intuicja - klon travis-a
+     
+
+** Gitlab-runner
+#+ATTR_REVEAL: :frag (appear)
+   - Proces, który wykonuje skrypty przekazane przez serwer gitlab.
+   - SSH, shell, docker-machine etc.
+   - Testy mogą wykonywać się równolegle, np. na innych serwerach
+   - Każdy runner wybierany przez tagi
+  
+#+REVEAL: split
+   #+REVEAL_HTML: <video class="stretch" controls data-src="wideo/ci.mp4"></video>
+
+** Auto skalowanie
+   - Przykład: Public cloud w OVH
+
+** Review environment
+
+#+ATTR_REVEAL: :frag (appear)
+   - Tworzenie "tymczasowych" środowisk
+   - Testowanie zmian przed zatwierdzeniem 
+
+#+REVEAL: split
+   #+REVEAL_HTML: <video class="stretch" controls data-src="wideo/review.mp4"></video>
+   
+** Docker registry
+
+#+ATTR_REVEAL: :frag (appear)
+   - Własne, prywatne repozytorium hostowane przez gitlab-a
+   - Tworzenie obrazów jako element pipeline
+
+#+REVEAL: split
+   #+REVEAL_HTML: <video class="stretch" controls data-src="wideo/registry.mp4"></video>
+   
+* Wady 
+#+ATTR_REVEAL: :frag (appear)
+   - Słabe mechanizmy zliczania czasu
+   - Brak możliwości stosowania punktów 
+   - Obejście: https://github.com/RatioWeb/greasemonkey-time-tracking
+     
+
+
+* Dziękuję!
+jsobiecki@ratioweb.pl 
+Ratio Web http://www.ratioweb.pl
+
+*** Koniec
+:PROPERTIES:
+:reveal_background: https://media.giphy.com/media/b4DY3AXN7b19m/giphy.gif
+:END:
+
